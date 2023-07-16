@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>School Project</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                text-decoration: none;
+                color: #000;
+                scroll-behavior: smooth;
+            }
+            .underline{
+                position:relative;
+                font-weight: 500;
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .underline:before{
+                content:'';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: #02a451;
+                left: 0;
+                right: 0;
+                bottom: -4px;
+                border-radius: 50px;
+                transition: width 0.3s ease-in-out;
+            }
+            .underline:hover:before{
+                width: 100%;
+            }
+            header{
+                width: 100vw;
+                height: 80px;
+                position: fixed;
+                z-index: 10;
+                background: #fff;
+                box-shadow: 0px 15px 10px -15px #a0a0a03b;
+            }
+            header nav{
+                display: flex;
+                padding: 20px 70px;
+                position: relative;
+                height: -webkit-fill-available;
+                justify-content: space-between;
+                align-items: center;
+            }
+            header nav .nav-menu{
+                width: 60%;
+            }
+            nav .logoConatiner h4{
+                font-size: 24px;
+                color: darkgreen;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+            header nav .nav-menu .categories{
+                display: flex;
+                width: 80%;
+                justify-content: space-around;
+            }
+            header nav .nav-menu .categories li{
+                font-size: 18px;
+                font-weight: 500;
+                color: #456254;
+            }
+            .bannerSection {
+                position: relative;
+                height: 100vh;
+            }
+            .bannerSection .leftSide{
+                position: absolute;
+                height: -webkit-fill-available;
+                width: 65%;
+                top: 80px;
+                z-index: 3;
+                background-color: #fff;
+                -webkit-clip-path: polygon(59% 0, 100% 50%, 60% 100%, 0 100%, 0 0);
+                clip-path: polygon(59% 0, 100% 50%, 60% 100%, 0 100%, 0 0);
+            }
+            .innerpolygon{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 4;
+                background-color: #6d92888f;
+                display: flex;
+                align-items: center;
+                -webkit-clip-path: polygon(54% 0, 94% 50%, 54% 100%, 0 100%, 0 0);
+                clip-path: polygon(54% 0, 94% 50%, 54% 100%, 0 100%, 0 0);
+            }
+            .innerpolygon h1{
+                font-size: 25px;
+                font-weight: 700;
+                line-height: 65px;
+                width: 62%;
+                text-transform: capitalize;
+                letter-spacing: 1px;
+                padding: 100px;
+                color: #456254;
+            }
+            .bannerSection .rightSide{
+                position: absolute;
+                width: 62%;
+                height: -webkit-fill-available;
+                top: 80px;
+                right: 0;
+                background-image: url(/images/backgroundImage.webp);
+                background-repeat: no-repeat;
+                z-index: 1;
+                background-size: cover;
+            }
+
+            /* -- second container --  */
+            .sponsorSection{
+                padding: 70px 100px;
+                background-color: #f4f6f6;
+                margin: 65px 0px;
+                position: relative;
+            }
+            .sponsorSection h4{
+                text-align: center;
+                color:  #031745;
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 40px;
+            }
+            .sponsorlogoContainer{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .sponsorlogoContainer .logo img{
+                width: 125px;
+                object-fit: cover;
+            }
+
+            .footerSection{
+                position: relative;
+                padding: 120px 120px 50px;
+                background-color: #546b65;
+            }
+            .footerSection h3{
+                font-size: 45px;
+                font-weight: 400;
+                font-family: 'Google Sans';
+                font-style: normal;
+                color: #fff;
+            }
+            .justify-content-evenly{
+                justify-content: space-evenly !important;
+            }
+            .footerSection .top button{
+                padding: 11px 35px;
+                border-radius: 40px;
+                font-size: 18px;
+                outline: none;
+                font-weight: 400;
+                transition: all 0.3s ease-in-out;
+            }
+            .unfilled{
+                background-color: #3a5f5f;
+                color: #fff;
+                border: 1px solid #3a5f5f;
+            }
+            .unfilled:hover{
+                background-color: #546b65;
+                color: #fff;
+                border: 1px solid #fff;
+            }
+            .filled{
+                background-color: #fff;
+                color: #546b65;
+                border: 1px solid #fff;
+            }
+            .filled:hover{
+                background-color: #546b65;
+                color: #fff;
+                border: 1px solid #fff;
+            }
+            .thirdSection{
+                padding: 100px;
+                background-color: #546b65;
+                color: #fff;
+                position: relative;
+                overflow: visible !important;
+            }
+            .thirdSection .flex{
+                display: flex;
+                align-items: center;
+            }
+            .thirdSection h3{
+                margin: 0;
+                color: #fff;
+                font-size: 36px;
+                line-height: 48px;
+                letter-spacing: .7px;
+            }
+            .thirdSection p{
+                margin: 0;
+                color: #fff;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0.4px;
+            }
+            .thirdSection:after{
+                content: '';
+                position: absolute;
+                top: -34px;
+                left: 56px;
+                border-radius: 50%;
+                z-index: 2;
+                width: 75px;
+                height: 75px;
+                background: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(25px);
+            }
+            .thirdSection:before{
+                content: '';
+                position: absolute;
+                bottom: -36px;
+                right: 56px;
+                border-radius: 50%;
+                z-index: 2;
+                width: 75px;
+                height: 75px;
+                background: rgba(255, 255, 255, 0.4);
+                backdrop-filter: blur(25px);
+            }
+            .blogSection{
+                padding: 100px 100px 0px 100px;
+            }
+            .blogSection .container-fluid{
+                padding-bottom: 100px;
+                border-bottom: 1px solid #a0a0a040;
+            }
+            .blogSection img{
+                width: 80%;
+                display: block;
+                margin: auto;
+                border-radius: 15px;
+            }
+            .blogSection  h4{
+                margin: 0;
+                font-weight: 500;
+                font-size: 42px;
+                color: #546b65;
+            }
+            .blogSection p{
+                margin: 0;
+                font-size: 16px;
+            }
+            .blogSection .leftpart{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+            .blogSection small a{
+                color: #154882;
+            }
+            .blurCircle img{
+                z-index: 2;
+                position: relative;
+            }
+            .blurCircle:before{
+                content: '';
+                position: absolute;
+                top: -76px;
+                left: -10px;
+                border-radius: 50%;
+                z-index: 1;
+                width: 175px;
+                height: 175px;
+                background: rgba(0, 27, 166, 0.06);
+                backdrop-filter: blur(37.5px);
+            }
+            .blurCircle:after{
+                content: '';
+                position: absolute;
+                bottom: -58px;
+                right: 90px;
+                border-radius: 50%;
+                z-index: 3;
+                width: 110px;
+                height: 110px;
+                background: rgba(0, 27, 166, 0.06);
+                backdrop-filter: blur(37.5px);
+            }
+            .gridView img{
+                width: 100%;
+                z-index: 2; 
+                object-fit: cover;
+                box-shadow: 1px 0px 4px 0px #a0a0a0;
+            }
+            .gridView:after{
+                content: '';
+                position: absolute;
+                top: -38px;
+                left: 16px;
+                border-radius: 50%;
+                z-index: 1;
+                width: 110px;
+                height: 110px;
+                background: rgba(0, 27, 166, 0.06);
+                backdrop-filter: blur(37.5px);
+            }
+            .gridView:before{
+                content: '';
+                position: absolute;
+                bottom: -67px;
+                right: 59px;
+                border-radius: 50%;
+                z-index: 3;
+                width: 75px;
+                height: 75px;
+                background: rgba(0, 27, 166, 0.06);
+                backdrop-filter: blur(37.5px);
+            }
+            .gridView{
+                display: grid;
+                grid-gap: 10px;
+                z-index:2;
+                grid-template-areas:
+                    "img1 img2 img3"
+                    "img4 img5 img6"
+                    "img7 img8 img9";
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 10% 10% 10%;
+                /* grid-gap: 100px; */
+                grid-row-gap: 220px;
+                height: 400px;
+                padding: 0px 80px 0px;
+            }
+            /* .gridView .img1 {
+                grid-area: img1;
+                height: -webkit-fill-available;
+                width: 100%;
+            }
+            .gridView .img2 {
+                grid-area: img2;
+                height: -webkit-fill-available;
+                width: 100%;
+            }
+            .gridView .img3 {
+                grid-area: img3;
+                height: -webkit-fill-available;
+                width: 100%;
+            }
+            .gridView .img4 {
+                grid-area: img4;
+                height: -webkit-fill-available;
+                width: 100%;
+            }
+            .gridView .img5 {
+                grid-area: img5;
+                height: -webkit-fill-available;
+                width: 100%;
+            } */
+            .footerSection .bottom .left{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .footerSection .bottom h5{
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 28px;
+                color: #fff;
+                margin: 0;
+                padding: 20px 0px;
+            }
+            .footerSection .bottom p{
+                font-weight: 200;
+                font-size: 14px;
+                line-height: 22px;
+                color: #fff;
+                margin: 0;
+            }
+            .footerSection .bottom .right h6{
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
+                color: #fff;
+                margin: 0;
+            }
+            .footerSection .bottom .left p{
+                padding: 20px 0px;
+            }
+            .footerSection .bottom .right p{
+                padding: 7px 0px;
+            }
+            .footerSection .bottom .iconDiv .fa-brands{
+                color: #fff;
+                margin-right: 16px;
+                font-size: 18px;
+            }
+            .footerSection .line{
+                width: 100%;
+                height: 1px;
+                background-color: #ffffff3d;
+                margin: 55px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logoConatiner">
+                    <a href="">
+                        <h4>Faridabad Model School (FMS)</h4> 
+                    </a>
+                </div>
+                <div class="nav-menu">
+                    <ul class="categories">
+                        <a href="#home"><li class="underline">Home</li></a>
+                        <a href="#About"><li class="underline">About</li></a>
+                        <a href="#Gallery"><li class="underline">Gallery</li></a>
+                        <a href="#Contact"><li class="underline">Contact</li></a>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <section class="bannerSection"  id="home">            
+            <div class="leftSide">
+                <div class="innerpolygon">
+                    <h1>
+                        Faridabad Model School (FMS) is a school in Faridabad, Haryana, India. 
+                        The school is located in Sector-31, Faridabad adjacent to National Highway 2. 
+                        Faridabad Model School is affiliated to the Central Board of Secondary Education (CBSE), 
+                        New Delhi up to Class XII.
+                    </h1>
+                </div>
+            </div>   
+            <div class="rightSide">
+                <img src="./images/main.jpg" width="900px" height="650px">
+            </div>         
+        </section>
+
+
+        <section class="blogSection" id="About"> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <h4>About</h4>
+                        <br>
+                        <div class="sponsorlogoContainer">
+                        <h3>
+                            Welcome to the world of FMS where we 
+                            <b>"Inspire young minds into future leaders."</b>
+                            Faridabad Model School is ideally located in Sector-31, Faridabad adjacent to National 
+                            Highway -2 (Delhi- Mathura Road). FMS Sector-31 is affiliated to Central Board of Secondary 
+                            Education, New Delhi upto Class XII. Our excellent infrastructure, eco-friendly, spacious 
+                            and caring environment, highly experienced and committed staff, well balanced and child 
+                            centric curriculum stimulates creativity and innovation in our children. We nurture creative 
+                            individualism with a sense of community responsibility within an ethical framework.
+                        </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blogSection" id="Gallery"> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12" style="max-height: 1500px;"> 
+                        <h4>Gallery</h4>
+                        <br>
+                        <h3>Different Activities performed in the school</h3>
+                        <br>
+                        <br>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 gridView">
+                            <img src="./images/blog1.jpg" class="img1" alt="blogmm1.png">
+                            <img src="./images/blog2.jpg" class="img2" alt="blogmm2.png">
+                            <img src="./images/blog3.jpg" class="img3" alt="blogmm3.png">                            
+                            <img src="./images/blog4.jpg" class="img4" alt="blogmm4.png">
+                            <img src="./images/blog5.jpg" class="img5" alt="blogmm5.png">
+                            <img src="./images/blog6.jpg" class="img6" alt="blogmm6.png">
+                            <img src="./images/blog7.jpg" class="img7" alt="blogmm7.png">
+                            <img src="./images/blog8.jpg" class="img8" alt="blogmm8.png">
+                            <!-- <img src="C:\Users\nimbu\Downloads\apj\apj\images\main.jpg" class="img9" alt="blogmm9.png">                             -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div style="margin-top: 50px;"> 
+        <section class="blogSection" id="Contact">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 leftpart">
+                        <h4>Contact</h4>
+                        <p>
+                            <br>
+                            <b>Address:</b> Sector 31, Near Pristine Mall, Faridabad, Haryana 121002
+                            <br>
+                            <b>Email:</b> enquiry@fmsschools.com, info@fmsschools.com
+                            <br>
+                            <b>Phone:</b> # 0129 4045 881/882, # 8800933131, 8826933131
+                            <br>
+                            <b>Social Media:</b> LinkedIn, Twitter, Facebook, Instagram 
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+        
+
+
+
+    </body>
+</html>
